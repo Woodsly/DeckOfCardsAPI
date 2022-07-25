@@ -1,0 +1,40 @@
+﻿@model DeckModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<p>@Model.cards[0].value</p>
+<p>@Model.cards[0].suit</p>
+<img src="@Model.cards[0].image" />
+<br />
+<p>@Model.cards[1].value</p>
+<p>@Model.cards[1].suit</p>
+<img src="@Model.cards[1].image" />
+<br />
+<p>@Model.cards[2].value</p>
+<p>@Model.cards[2].suit</p>
+<img src="@Model.cards[2].image" />
+<br />
+<p>@Model.cards[3].value</p>
+<p>@Model.cards[3].suit</p>
+<img src="@Model.cards[3].image" />
+<br />
+<p>@Model.cards[4].value</p>
+<p>@Model.cards[4].suit</p>
+<img src="@Model.cards[4].image" />
+<br />
+
+<form method="post">
+    <button type="Post" asp-action="DrawCards">Draw Again</button>
+</form>
+
+@{
+    if(@Model.remaining <= 5)
+    {
+        DeckDAL d = new DeckDAL();
+        d.ShuffleCards();
+    }
+}
